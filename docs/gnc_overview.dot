@@ -1,0 +1,19 @@
+digraph GnuCashModel {
+    rankdir=LR;
+    node [shape=record, fontname=Helvetica];
+
+    Book [label="{Book|contains Accounts, Transactions}"];
+    Account [label="{Account|name, type, balance...}"];
+    Transaction [label="{Transaction|date, description...}"];
+    Split [label="{Split|amount, value}"];
+
+    Book -> Account [label="has many"];
+    Book -> Transaction [label="has many"];
+
+    Account -> Split [label="has many"];
+    Transaction -> Split [label="has many"];
+
+    Split -> Account [label="belongs to"];
+    Split -> Transaction [label="belongs to"];
+}
+
